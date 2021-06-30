@@ -12,6 +12,7 @@ module.exports = {
     db: {
         cassandra: {
         contactPoints: envHelper.PORTAL_CASSANDRA_URLS,
+        localDataCenter: 'dataCenter1',
         defaultKeyspaceSettings: {
             replication: replicationStrategy,
         },
