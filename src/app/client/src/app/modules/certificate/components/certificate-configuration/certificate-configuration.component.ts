@@ -282,10 +282,10 @@ export class CertificateConfigurationComponent implements OnInit, OnDestroy {
             'identifier': _.get(this.selectedTemplate, 'identifier'),
             'criteria': this.getCriteria(this.userPreference.value),
             'name': _.get(this.selectedTemplate, 'name'),
-            'issuer': JSON.parse(_.get(this.selectedTemplate, 'issuer')),
+            'issuer': (_.get(this.selectedTemplate, 'issuer')),
             'data': JSON.stringify(_.get(this.selectedTemplate, 'data')),
             'previewUrl': _.get(this.selectedTemplate, 'artifactUrl'),
-            'signatoryList': JSON.parse(_.get(this.selectedTemplate, 'signatoryList'))
+            'signatoryList': (_.get(this.selectedTemplate, 'signatoryList'))
           }
         }
       }

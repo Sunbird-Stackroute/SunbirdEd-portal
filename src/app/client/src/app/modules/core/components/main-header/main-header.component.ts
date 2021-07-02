@@ -188,7 +188,7 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
     } else if (url.indexOf('play') >= 0) {
       this.hrefPath = '/resources' + url;
     } else {
-      this.hrefPath = '/resources';
+      this.hrefPath = '/search/Library/1?selectedTab=all';
     }
   }
   getTelemetryContext() {
@@ -625,7 +625,7 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
       }
       this.deviceProfile = _.get(deviceProfile, 'result');
       this.showLocationPopup = true;
-    }, (err) => { 
+    }, (err) => {
       this.toasterService.error(_.get(this.resourceService, 'messages.emsg.m0005'));
     });
   }

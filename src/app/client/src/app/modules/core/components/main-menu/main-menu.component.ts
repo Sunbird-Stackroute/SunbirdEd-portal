@@ -96,7 +96,7 @@ export class MainMenuComponent implements OnInit {
       } else if (url.indexOf('play') >= 0) {
         this.hrefPath = '/resources' + url;
       } else {
-        this.hrefPath = '/resources';
+        this.hrefPath = '/search/Library/1?selectedTab=all';
       }
   }
   ngOnInit() {

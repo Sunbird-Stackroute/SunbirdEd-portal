@@ -1,11 +1,11 @@
 <sui-modal
-    [mustScroll]="true" 
+    [mustScroll]="true"
     [isClosable]="true"
     [transitionDuration]="0"
     [size]="'small'"
     class="sb-modal sb-error"
     appBodyScroll
-    #unenrollBatch 
+    #unenrollBatch
     (dismissed)="redirect()">
 
     <!--Header-->
@@ -25,18 +25,18 @@
         <button appTelemetryInteract [telemetryInteractObject]="telemetryInteractObject" [telemetryInteractEdata]="submitInteractEdata"  [telemetryInteractCdata]="telemetryCdata"
             class="sb-btn sb-btn-normal sb-btn-error"
             [disabled]="disableSubmitBtn"
-            id="unenrollFromCourse" 
+            id="unenrollFromCourse"
             (click)="unenrollFromCourse()"
         >
-            {{generaliseLabelService?.frmelmnts?.btn?.unenroll}}
+            {{resourceService?.frmelmnts?.btn?.unenroll}}
         </button>
-        <button 
-            class="sb-btn sb-btn-normal sb-btn-outline-error" 
+        <button
+            class="sb-btn sb-btn-normal sb-btn-outline-error"
             (click)="unenrollBatch.deny();"
         >
             {{resourceService.frmelmnts.btn.cancel}}
         </button>
-        
+
     </div>
     <!--/Actions-->
  </sui-modal>

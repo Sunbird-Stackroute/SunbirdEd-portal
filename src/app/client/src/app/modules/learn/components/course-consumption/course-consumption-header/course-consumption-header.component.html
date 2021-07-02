@@ -56,14 +56,14 @@
               </button>
 
                <!-- Discussion Forum -->
-               <button class="sb-btn sb-btn-normal sb-btn-link sb-btn-link-primary sb-left-icon-btn ml-8 sb-btn-icon-fix" 	
-               appTelemetryInteract [telemetryInteractObject]="courseInteractObject"	
-               [telemetryInteractEdata]="{id:'discussion' , type: 'click' , pageid:'course-consumption'}" 	
-               [telemetryInteractCdata]="[{id: courseHierarchy?.identifier, type: 'Course'}]"	
-               (click)="openDiscussionForum()" *ngIf="forumId && (enrolledCourse || (courseConsumptionService?.userCreatedAnyBatch | async))"	
-               title="Forum">	
-                  <img src="assets/images/forum.svg" width="16px" class="mr-8">	
-                  {{resourceService?.frmelmnts?.lbl?.discussionForum}}	
+               <button class="sb-btn sb-btn-normal sb-btn-link sb-btn-link-primary sb-left-icon-btn ml-8 sb-btn-icon-fix"
+               appTelemetryInteract [telemetryInteractObject]="courseInteractObject"
+               [telemetryInteractEdata]="{id:'discussion' , type: 'click' , pageid:'course-consumption'}"
+               [telemetryInteractCdata]="[{id: courseHierarchy?.identifier, type: 'Course'}]"
+               (click)="openDiscussionForum()" *ngIf="forumId && (enrolledCourse || (courseConsumptionService?.userCreatedAnyBatch | async))"
+               title="Forum">
+                  <img src="assets/images/forum.svg" width="16px" class="mr-8">
+                  {{resourceService?.frmelmnts?.lbl?.discussionForum}}
                </button>
             </div>
           </div>
@@ -85,11 +85,11 @@
           appAddToGroup [identifier]="courseHierarchy?.identifier" [pageId]="courseHierarchy?.primaryCategory.toLowerCase()">
           {{resourceService?.frmelmnts?.lbl?.AddtoGroup}}</button>
         </div>
-        <!-- join course, start learning, continue learning, view dashboard buttons -->  
+        <!-- join course, start learning, continue learning, view dashboard buttons -->
         <div *ngIf="!showAddGroup && isTrackable">
           <div class="certified-course__btn" *ngIf="!enrolledCourse && !viewDashboard">
             <button  [disabled]="!(courseConsumptionService.enableCourseEntrollment | async)"  [ngClass]="{'sb-btn-disabled': !(courseConsumptionService.enableCourseEntrollment | async)}" class="sb-btn sb-btn-secondary sb-btn-normal ml-auto textbook__addbtn"
-              (click)="showJoinModal(true); this.logTelemetry('join-course', courseHierarchy)">{{generaliseLabelService?.frmelmnts?.btn?.enroll}}</button>
+              (click)="showJoinModal(true); this.logTelemetry('join-course', courseHierarchy)">{{resourceService?.frmelmnts?.btn?.enroll}}</button>
           </div>
 
           <div class="certified-course__btn" *ngIf="enrolledCourse && progress===0 && !viewDashboard">
@@ -108,7 +108,7 @@
             <button appTelemetryInteract [telemetryInteractObject]="courseInteractObject"
               [telemetryInteractEdata]="{id:'viewCourseDashboard' , type: 'click' , pageid:'course-consumption'}"
               class="sb-btn sb-btn-secondary sb-btn-normal" (click)="showDashboard()">
-              {{generaliseLabelService?.frmelmnts?.btn?.viewCourseStatsDashboard}}
+              {{resourceService?.frmelmnts?.btn?.viewCourseStatsDashboard}}
             </button>
           </div>
 
