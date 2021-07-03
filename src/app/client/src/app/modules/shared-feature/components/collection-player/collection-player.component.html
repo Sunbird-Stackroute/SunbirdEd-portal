@@ -1,25 +1,48 @@
-<app-landing-section [textToDisplay]="" [layoutConfiguration]="layoutConfiguration" [noTitle]="true">
+<app-landing-section [textToDisplay]="" [showBanner]="false" [layoutConfiguration]="layoutConfiguration"
+  [noTitle]="true">
 </app-landing-section>
 <div [appTelemetryStart]="telemetryCourseStart" [appTelemetryEnd]="telemetryCourseEndEvent">
   <div *ngIf="collectionData" class="relative9" [style.display]="!showLoader ? 'block' : 'none'"
     [appTelemetryImpression]="telemetryContentImpression">
     <!--CC-Player Back button -->
 
-    <div class="sb-bg-white relative position cc-player__btn-back ">
-      <div class="ui container py-8 px-0">
-        <button type="button" class="sb-btn sb-btn-normal sb-btn-link sb-btn-link-primary sb-left-icon-btn px-0"
-          (click)="closeCollectionPlayer()">
-          <i class="icon-svg icon-svg--xxs icon-back mr-4"><svg class="icon icon-svg--primary">
-              <use xlink:href="assets/images/sprite.svg#arrow-long-left"></use>
-            </svg></i>
-          {{resourceService?.frmelmnts?.btn?.back}}
-        </button>
+    <div
+      class="sb-bg-color-purple sb-text-color-white sb-bg-white relative position cc-player__btn-back  tool-bar-container">
+      <div class="container px-16">
+        <div class="py-8 d-flex flex-ai-center width-full flex-jc-sb">
+          <div class="wrap-btn-text d-flex">
+            <button type="button" class="sb-btn sb-btn-normal sb-btn-link sb-text-color-white sb-left-icon-btn mr-auto"
+              (click)="closeCollectionPlayer()">
+              <i class="icon-svg icon-svg--xxs icon-back mr-4"><svg class="icon icon-svg--white">
+                  <use xlink:href="assets/images/sprite.svg#arrow-long-left"></use>
+                </svg></i>
+              <!-- {{resourceService?.frmelmnts?.btn?.back}} -->
+            </button>
+
+            <!--added breadcrumbs for tool bar-->
+            <span class="text-left text-truncate text-white font-montserrat breadcrumbs-main-container"
+              *ngIf="activePathHierarchy && activePathHierarchy?.length">
+              <ul class="breadcrumbs">
+                <div class="main-div-breadcrumbs-item">
+                  <ng-container *ngFor="let data of activePathHierarchy;let i = index">
+                    <li class="breadcrumbs_child">
+                      <div>{{data.name}}</div>
+                      <div>
+                        <mat-icon *ngIf="activePathHierarchy.length-1 > i" class="icon-display">navigate_next</mat-icon>
+                      </div>
+                    </li>
+                  </ng-container>
+                </div>
+              </ul>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
 
     <!--CC-Player Content Header -->
-    <div class="content-header cc-player__content-header" *ngIf="collectionData">
-      <div class="ui container py-16">
+    <div class="content-header cc-player__content-header px-32" *ngIf="collectionData">
+      <div class="ui py-16">
         <div class="content-header__content">
           <div class="d-flex flex-dc flex-basis-1 mr-32 min-w-0">
             <div class="content-header__title font-weight-bold ellipsis text-left">{{collectionData.name}}</div>
@@ -95,16 +118,11 @@
       </div>
     </div>
     <!-- CC-Player Video -->
-    <div class="ui container">
+    <div class="ui px-32">
       <div class="cc-player sb-g">
+        <ng-container *ngIf="showSideNav">
         <section
-          class="sb-g-col-xs-12 sb-g-col-md-8 sb-g-col-lg-8 sb-g-col-xxxl-12 cc-player__video sb-toc-player-column"
-          [appTelemetryImpression]="telemetryImpression" *ngIf="collectionData">
-          <app-contentplayer-page [playerConfig]="playerConfig | async" [tocPage]="true"
-            [contentDetails]="activeContent" [isContentPresent]="isContentPresent" [objectRollUp]="objectRollUp">
-          </app-contentplayer-page>
-        </section>
-        <section class="sb-g-col-xs-12 sb-g-col-md-4 sb-g-col-lg-4 sb-g-col-xxxl-4 cc-player__list mb-16 relative9"
+          class="sb-g-col-xs-12 sb-g-col-md-4 sb-g-col-lg-4 sb-g-col-xxxl-4 cc-player__list mb-16 relative9 bg-pink sidebar-height"
           *ngIf="collectionData">
           <div class="toc-box-shadow mb-2" *ngIf="isCopyAsCourseClicked">
             <div class="sbselectpopover sbselectpopover--bg-white d-flex flex-ai-center sb-bg-color-white p-16">
@@ -129,7 +147,8 @@
               (tocCardClick)="tocCardClickHandler($event)" [activeContent]="activeContent"
               (noContent)="showNoContent($event)" (selectedItem)="handleSelectedItem($event)" appTelemetryInteract
               [telemetryInteractEdata]="tocTelemetryInteractEdata" [platform]="PlatformType.PORTAL"
-              [type]="TocCardType.TRACKABLE" [trackableDefaultImage]="'assets/images/mask-image/courses.svg'"></sb-toc-item>
+              [type]="TocCardType.TRACKABLE" [trackableDefaultImage]="'assets/images/mask-image/courses.svg'">
+            </sb-toc-item>
           </div>
           <div [hidden]="!isSelectChapter">
             <span>
@@ -137,10 +156,27 @@
                 (tocChapterClick)="tocChapterClickHandler($event)"></app-content-chapterlist>
             </span>
           </div>
-          <div>
+          <!-- <div>
             <app-content-licence [content]="collectionData"></app-content-licence>
-          </div>
+          </div> -->
         </section>
+      </ng-container>
+        <section
+          class="sb-g-col-xxxl-12 cc-player__video sb-toc-player-column"
+          [appTelemetryImpression]="telemetryImpression" *ngIf="collectionData" [ngClass]="{'sb-g-col-xs-12':!sideNavClose ,'sb-g-col-lg-8, sb-g-col-md-8':sideNavClose }">
+          <button *ngIf="sideNavClose" mat-icon-button aria-label="Navbar Toggle button"
+          class="toggleBtn side-nav-button-opened" (click)="sideNavOpenAndClose()">
+          <mat-icon class="dehaze-icon reverse">double_arrow</mat-icon>
+        </button>
+        <button *ngIf="!sideNavClose" mat-icon-button aria-label="Navbar Toggle button"
+          class="toggleBtn side-nav-button-closed" (click)="sideNavOpenAndClose()">
+          <mat-icon class="dehaze-icon">double_arrow</mat-icon>
+        </button>
+          <app-contentplayer-page [playerConfig]="playerConfig | async" [tocPage]="true"
+            [contentDetails]="activeContent" [isContentPresent]="isContentPresent" [objectRollUp]="objectRollUp">
+          </app-contentplayer-page>
+        </section>
+
       </div>
     </div>
   </div>

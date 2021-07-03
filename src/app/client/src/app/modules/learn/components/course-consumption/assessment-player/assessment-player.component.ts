@@ -61,6 +61,8 @@ export class AssessmentPlayerComponent implements OnInit, OnDestroy {
   layoutConfiguration;
   isCourseCompletionPopupShown = false;
   previousContent = null;
+  showSideNav = true
+  sideNavClose = true
 
   constructor(
     public resourceService: ResourceService,
@@ -144,13 +146,22 @@ export class AssessmentPlayerComponent implements OnInit, OnDestroy {
     if (_.get(this.activatedRoute, 'snapshot.queryParams.textbook')) {
       paramas['textbook'] = _.get(this.activatedRoute, 'snapshot.queryParams.textbook');
     }
-    this.router.navigate(['/learn/course', this.courseId, 'batch', this.batchId], {queryParams: paramas});
+    // this.router.navigate(['/learn/course', this.courseId, 'batch', this.batchId], {queryParams: paramas});
+    //update the url only if it has batch id, or use default url 
+    if(!this.courseId && !this.batchId){
+    this.router.navigate(['/learn'], {queryParams: paramas});
+  }
+    else {
+    const url =  this.batchId ? `/learn/course/${this.courseId}/batch/${this.batchId}`: `/learn/course/${this.courseId}`
+    this.router.navigate([url], {queryParams: paramas});
+  }
   }
 
   private subscribeToQueryParam() {
     combineLatest([this.activatedRoute.params, this.activatedRoute.queryParams])
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(([params, queryParams]) => {
+        console.log("queryParams", queryParams, "params", params)
         this.consumedContents = 0;
         this.totalContents = 0;
         this.collectionId = params.collectionId;
@@ -160,7 +171,7 @@ export class AssessmentPlayerComponent implements OnInit, OnDestroy {
         const selectedContent = queryParams.selectedContent;
         let isSingleContent = this.collectionId === selectedContent;
         this.isParentCourse = this.collectionId === this.courseId;
-        if (this.batchId) {
+        if (true) {
           this.telemetryCdata = [{ id: this.batchId, type: 'CourseBatch' }];
           this.getCollectionInfo(this.courseId)
             .pipe(takeUntil(this.unsubscribe))
@@ -168,9 +179,12 @@ export class AssessmentPlayerComponent implements OnInit, OnDestroy {
               const model = new TreeModel();
               this.treeModel = model.parse(data.courseHierarchy);
               this.parentCourse = data.courseHierarchy;
+              console.log("    this.parentCourse ",     this.parentCourse  )
               const module = this.courseConsumptionService.setPreviousAndNextModule(this.parentCourse, this.collectionId);
               this.nextModule = _.get(module, 'next');
               this.prevModule = _.get(module, 'prev');
+              console.log(" nextModule ",   this.nextModule ,
+               "prevModule", this.prevModule , "this.courseConsumptionService.setPreviousAndNextModule(this.parentCourse, this.collectionId)",this.courseConsumptionService.setPreviousAndNextModule(this.parentCourse, this.collectionId))
               this.getCourseCompletionStatus();
               this.layoutService.updateSelectedContentType.emit(data.courseHierarchy.contentType);
               if (!this.isParentCourse && data.courseHierarchy.children) {
@@ -628,4 +642,8 @@ export class AssessmentPlayerComponent implements OnInit, OnDestroy {
       }
     });
   }
+  sideNavOpenAndClose(){
+  this.showSideNav = !this.showSideNav
+  this.sideNavClose = !this.sideNavClose
+}
 }

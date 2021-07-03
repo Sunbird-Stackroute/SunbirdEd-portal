@@ -12,6 +12,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "../dist",
+            "preserveSymlinks": true,
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
@@ -36,6 +37,7 @@
               }
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.min.css",
               "src/assets/styles/semantic/semantic.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
@@ -161,6 +163,7 @@
               "node_modules/leaflet/dist/leaflet.js"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/assets/styles/semantic/semantic.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "src/assets/styles/styles.scss"
@@ -187,7 +190,6 @@
               "src/app/client/src/**/*.spec.data.ts",
               "src/app/client/src/**/*.module.ts",
               "src/app/modules/cbse-program/**/**"
-
             ]
           }
         },

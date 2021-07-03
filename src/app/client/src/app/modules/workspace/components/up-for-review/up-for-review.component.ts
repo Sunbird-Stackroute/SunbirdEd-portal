@@ -1,5 +1,5 @@
 
-import { combineLatest,  Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { WorkSpace } from './../../classes/workspace';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -118,12 +118,12 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
   */
   public permissionService: PermissionService;
   /**
-	 * telemetryImpression
-	*/
+   * telemetryImpression
+  */
   telemetryImpression: IImpressionEventInput;
   /**
-	 * inviewLogs
-	*/
+   * inviewLogs
+  */
   inviewLogs = [];
   /**
     * Constructor to create injected service(s) object
@@ -203,7 +203,13 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
         board: bothParams.queryParams.board,
         subject: bothParams.queryParams.subject,
         medium: bothParams.queryParams.medium,
-        gradeLevel: bothParams.queryParams.gradeLevel
+        gradeLevel: bothParams.queryParams.gradeLevel,
+        mission: bothParams.queryParams.mission,
+        contributorOrg: bothParams.queryParams.contributorOrg,
+        department: bothParams.queryParams.department,
+        geo: bothParams.queryParams.geo,
+        topic: bothParams.queryParams.topic,
+        contentType: bothParams.queryParams.contentType
       },
       limit: limit,
       offset: (pageNumber - 1) * (limit),
@@ -241,11 +247,11 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
    * This method helps to navigate to different pages.
    * If page number is less than 1 or page number is greater than total number
    * of pages is less which is not possible, then it returns.
-	 *
-	 * @param {number} page Variable to know which page has been clicked
-	 *
-	 * @example navigateToPage(1)
-	 */
+   *
+   * @param {number} page Variable to know which page has been clicked
+   *
+   * @example navigateToPage(1)
+   */
   navigateToPage(page: number): undefined | void {
     if (page < 1 || page > this.pager.totalPages) {
       return;
@@ -276,7 +282,7 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
     this.telemetryImpression.edata.subtype = 'pageexit';
     this.telemetryImpression = Object.assign({}, this.telemetryImpression);
   }
-  ngAfterViewInit () {
+  ngAfterViewInit() {
     setTimeout(() => {
       this.telemetryImpression = {
         context: {
@@ -303,11 +309,11 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
       contentType = ['TextBook'];
     }
     if (_.indexOf(this.userRoles, 'CONTENT_REVIEWER') !== -1) {
-     contentType = _.without(this.config.appConfig.WORKSPACE.contentType, 'TextBook');
+      contentType = _.without(this.config.appConfig.WORKSPACE.contentType, 'TextBook');
     }
     if (_.indexOf(this.userRoles, 'CONTENT_REVIEWER') !== -1 &&
       _.indexOf(this.userRoles, 'BOOK_REVIEWER') !== -1) {
-        contentType = this.config.appConfig.WORKSPACE.contentType;
+      contentType = this.config.appConfig.WORKSPACE.contentType;
     }
     return contentType;
   }

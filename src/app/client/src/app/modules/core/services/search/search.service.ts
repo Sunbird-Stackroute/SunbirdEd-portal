@@ -10,6 +10,7 @@ import { LearnerService } from './../learner/learner.service';
 import { PublicDataService } from './../public-data/public-data.service';
 import * as _ from 'lodash-es';
 import { FormService } from './../form/form.service';
+import { FACETS } from '../../../constant';
 /**
  * Service to search content
  */
@@ -457,7 +458,7 @@ export class SearchService {
     return _.map(facets, facet => {
       switch (_.get(facet, 'name')) {
         case 'board':
-          facet['index'] = '1';
+          facet['index'] = '2';
           facet['label'] = this.resourceService.frmelmnts.lbl.boards;
           facet['placeholder'] = this.resourceService.frmelmnts.lbl.selectBoard;
           // Replacing cbse value with cbse/ncert
@@ -466,36 +467,75 @@ export class SearchService {
           });
           break;
         case 'medium':
-          facet['index'] = '2';
+          facet['index'] = '3';
           facet['label'] = this.resourceService.frmelmnts.lbl.medium;
           facet['placeholder'] = this.resourceService.frmelmnts.lbl.selectMedium;
           break;
         case 'gradeLevel':
-          facet['index'] = '3';
+          facet['index'] = '4';
           facet['label'] = this.resourceService.frmelmnts.lbl.class;
           facet['placeholder'] = this.resourceService.frmelmnts.lbl.selectClass;
           break;
         case 'subject':
-          facet['index'] = '4';
+          facet['index'] = '5';
           facet['label'] = this.resourceService.frmelmnts.lbl.subject;
           facet['placeholder'] = this.resourceService.frmelmnts.lbl.selectSubject;
           break;
         case 'publisher':
-          facet['index'] = '5';
+          facet['index'] = '6';
           facet['label'] = this.resourceService.frmelmnts.lbl.publisher;
           facet['placeholder'] = this.resourceService.frmelmnts.lbl.selectPublisher;
           break;
         case 'primaryCategory':
-          facet['index'] = '6';
+          facet['index'] = '7';
           facet['label'] = this.resourceService.frmelmnts.lbl.contentType;
           facet['placeholder'] = this.resourceService.frmelmnts.lbl.selectContentType;
           break;
         case 'mimeType':
-          facet['index'] = '7';
+          facet['index'] = '8';
           facet['name'] = 'mediaType';
           facet['label'] = this.resourceService.frmelmnts.lbl.mediaType;
           facet['mimeTypeList'] = this.mimeTypeList;
           break;
+        case 'channel':
+          facet['index'] = '1';
+          facet['label'] = _.get(this.resourceService, 'frmelmnts.lbl.orgname');
+          facet['placeholder'] = _.get(this.resourceService, 'frmelmnts.lbl.orgname');
+          facet['values'] = _.map(facet.values || [], value => ({ ...value, name: value.orgName }));
+          break;
+        case 'mission':
+          facet['index'] = '9';
+          facet['label'] = 'Mission'
+          facet['placeholder'] = _.get(this.resourceService, 'frmelmnts.lbl.selectMission')
+          // facet['values'] = FACETS.mission ? FACETS.mission : []
+          break;
+        case 'contributorOrg':
+          facet['index'] = '10'
+          facet['label'] = 'Contributor org'
+          facet['placeholder'] = 'Contributor org'
+          // facet['values'] = FACETS.contributor_org ? FACETS.contributor_org : []
+          break;
+        case 'geo':
+          facet['index'] = '11'
+          facet['label'] = 'Geo'
+          facet['placeholder'] = 'Geo'
+          break;
+        case 'department':
+          facet['index'] = '12'
+          facet['label'] = 'Department'
+          facet['placeholder'] = 'Department'
+          break;
+        case 'topic':
+          facet['index'] = '13'
+          facet['label'] = 'Topic'
+          facet['placeholder'] = 'Topic'
+          break;
+        case 'contentType':
+          facet['index'] = '14'
+          facet['label'] = 'Content Type'
+          facet['placeholder'] = 'Content Type'
+          break;
+
       }
       return facet;
     });
@@ -503,6 +543,6 @@ export class SearchService {
 
   isContentTrackable(content, type) {
     return (_.lowerCase(_.get(content, 'trackable.enabled')) === 'yes'
-    || (_.lowerCase(type) === _.lowerCase(this.config.appConfig.contentType.Course)));
+      || (_.lowerCase(type) === _.lowerCase(this.config.appConfig.contentType.Course)));
   }
 }
