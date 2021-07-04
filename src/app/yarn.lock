@@ -1201,19 +1201,12 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cassandra-driver@^3.2.1, cassandra-driver@^3.3.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/cassandra-driver/-/cassandra-driver-3.6.0.tgz#a9fb78ca6fcc1f5bf3f3258efb6cc683a9c3f558"
-  integrity sha512-CkN3V+oPaF5RvakUjD3uUjEm8f6U8S0aT1+YqeQsVT3UDpPT2K8SOdNDEHA1KjamakHch6zkDgHph1xWyqBGGw==
-  dependencies:
-    long "^2.2.0"
-
 cassandra-session-store@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cassandra-session-store/-/cassandra-session-store-1.0.6.tgz#e5b60b1a6c996c6d3c326cbd2307a39767543d30"
   integrity sha512-911DejVTCd3hq3nuVHWtcMz6IBqJH67X4Di7qcEx1dNlgI94g3EZzZDDGVW3mVFCfmI0fS2ftOWcN+xpeT32oA==
   dependencies:
-    cassandra-driver "^3.2.1"
+    cassandra-driver "3.2.1"
     express-session "^1.15.2"
 
 chai-http@4.2.0:
@@ -2358,7 +2351,7 @@ express-cassandra@2.1.0:
     async "^1.5.2"
     babel-polyfill "^6.26.0"
     bluebird "^3.4.6"
-    cassandra-driver "^3.3.0"
+    cassandra-driver "3.3.0"
     chai "^4.1.2"
     check-types "^1.4.0"
     debug "^3.1.0"
@@ -2378,7 +2371,7 @@ express-cassandra@^2.2.2:
     async "^1.5.2"
     babel-polyfill "^6.26.0"
     bluebird "^3.4.6"
-    cassandra-driver "^3.3.0"
+    cassandra-driver "3.3.0"
     chai "^4.1.2"
     check-types "^7.4.0"
     debug "^3.1.0"
