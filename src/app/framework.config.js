@@ -15,6 +15,7 @@ module.exports = {
         defaultKeyspaceSettings: {
             replication: replicationStrategy,
         },
+        localDataCenter: 'datacenter1'
         queryOptions: { 
             consistency: consistency 
         }
