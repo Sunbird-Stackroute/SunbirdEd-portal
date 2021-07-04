@@ -26,7 +26,7 @@ node('build-slave') {
                     println(ANSI_BOLD + ANSI_YELLOW + "github_release_tag not specified, using the latest commit hash: " + commit_hash + ANSI_NORMAL)
                 } else {
                     def scmVars = checkout scm
-                    checkout scm: [$class: 'GitSCM', branches: [[name: "refs/tags/$params.github_release_tag"]], userRemoteConfigs: [[url: scmVars.GIT_URL]]]
+                    checkout scm: [$class: 'GitSCM', branches: [[name: "origin/$params.github_release_tag"]], userRemoteConfigs: [[url: scmVars.GIT_URL]]]
                     build_tag = params.github_release_tag + "_" + env.BUILD_NUMBER
                     // Creating artifact version
                     commit_hash = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
