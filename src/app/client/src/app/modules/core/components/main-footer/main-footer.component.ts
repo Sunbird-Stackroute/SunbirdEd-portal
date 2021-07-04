@@ -10,12 +10,12 @@ import {
   Input,
   OnDestroy
 } from '@angular/core';
-import { ResourceService, ConfigService, LayoutService, COLUMN_TYPE, NavigationHelperService} from '@sunbird/shared';
+import { ResourceService, ConfigService, LayoutService, COLUMN_TYPE, NavigationHelperService } from '@sunbird/shared';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { IInteractEventEdata } from '@sunbird/telemetry';
 import { combineLatest as observableCombineLatest, Subject } from 'rxjs';
 import * as _ from 'lodash-es';
-import {UserService, TenantService} from './../../services';
+import { UserService, TenantService } from './../../services';
 import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-footer',
@@ -50,9 +50,9 @@ export class MainFooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(resourceService: ResourceService, public router: Router, public activatedRoute: ActivatedRoute,
     public configService: ConfigService, private renderer: Renderer2, private cdr: ChangeDetectorRef, public userService: UserService,
-      public tenantService: TenantService, public layoutService: LayoutService,
-      public navigationHelperService: NavigationHelperService
-    ) {
+    public tenantService: TenantService, public layoutService: LayoutService,
+    public navigationHelperService: NavigationHelperService
+  ) {
     this.resourceService = resourceService;
   }
 
@@ -79,7 +79,7 @@ export class MainFooterComponent implements OnInit, AfterViewInit, OnDestroy {
     this.redoLayout();
   }
 
- ngAfterViewInit() {
+  ngAfterViewInit() {
     // this.footerAlign();
   }
   @HostListener('window:resize', ['$event'])
@@ -158,6 +158,9 @@ export class MainFooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   redirect(url) {
     window.location.href = url;
+  }
+  navigateToOuterSource(url: string) {
+    window.open(url, '_blank')
   }
 
   ngOnDestroy() {

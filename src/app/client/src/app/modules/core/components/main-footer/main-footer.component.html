@@ -1,3 +1,135 @@
+<div id="display-item" class="mat-toolbar footer-container px-2 sm:px-10 py-1 sm:py-5">
+  <div class="mat-body flex" id="display">
+    <!-- <mat-grid-list cols="2" rowHeight="133px"> -->
+    <!-- <mat-grid-tile class="font-semibold text-xs md:text-sm xl:text-sm" i18n> -->
+    <div class="col-1">
+      <p class="text-style">
+        Ekstep Foundation</p>
+      <p class="text-style"> Quorum, No. 85, 7th Cross, 4th Block</p>
+      <p class="text-style"> Koramangala, Bangalore - 560034</p>
+      <p class="text-style"> Karnataka, INDIA</p>
+      <p class="text-style"><a class="mail-style body-font-size-secondary"
+          href="mailto:space@societalplatform.org">space@societalplatform.org</a><br>
+      </p>
+    </div>
+    <!-- </mat-grid-tile> -->
+    <!-- <mat-grid-tile> -->
+    <div class="col-2">
+      <p class="policy-text-style policy-footer"> <a routerLink="/public/dataprivacy"
+          class="text-style policy font-size-14px" name="helpAndContactButtonHomePage" i18n>Data
+          Privacy</a></p>
+      <p class="policy-text-style policy-footer"><a routerLink="public/termsofuse"
+          class="text-style policy font-size-14px" name="helpAndContactButtonHomePage" i18n>Terms &
+          Conditions</a></p>
+      <p class="policy-text-style policy-footer"><a routerLink="/public/content-policy-and-community-guidelines"
+          class="text-style policy font-size-14px" name="helpAndContactButtonHomePage" i18n>Content Policy and Community
+          Guidelines
+          <!-- Process -->
+        </a></p>
+      <!-- </div> -->
+      <!-- <div class="mat-body" id="display"> -->
+      <p class="policy-text-style policy-footer"><a routerLink="/public/licencepolicy"
+          class="text-style policy font-size-14px" name="termOfUseButtonHomePage" i18n>License Policy</a>
+      </p>
+      <p class="policy-text-style policy-footer"><a routerLink="/public/assetguidelines"
+          class="text-style policy font-size-14px" name="termOfUseButtonHomePage" i18n>Asset
+          Guidelines</a>
+      </p>
+      <!-- <a routerLink="/public/contact" name="helpAndContactButtonHomePage" i18n>Contact Us</a> -->
+      <!-- </div> -->
+    </div>
+    <!-- </mat-grid-tile> -->
+    <!-- </mat-grid-list> -->
+    <div class="col-3 footer-playstore-buttons">
+      <div class="rectangle" (click)="navigateToOuterSource('https://apps.apple.com/us/app/id1530333275')">
+        <a class="flex">
+          <div class="appleIcon">
+            <img src="assets/images/appleIcon.png">
+          </div>
+          <div class="appStore-icon">
+            <p class="icon-text">Available on the</p>
+            <p class="appstore-text">App Store</p>
+          </div>
+        </a>
+      </div>
+      <div class="rectangle"
+        (click)="navigateToOuterSource('https://play.google.com/store/apps/details?id=ekstep.societal.space')">
+        <a class="flex">
+          <div class="playStore">
+            <img src="assets/images/playStore.png">
+          </div>
+          <div class="appStore-icon">
+            <p class="icon-text">Get it on</p>
+            <p class="appstore-text">Google Play</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="display-responsive" class="mat-toolbar px-2 sm:px-10 py-1 sm:py-4">
+
+  <!-- <div>
+    <p class="display-style">
+      <a routerLink="/public/dataprivacy" name="helpAndContactButtonHomePage" i18n>Data Privacy</a> |
+    </p>
+    <p class="display-style">
+      <a routerLink="public/termsofuse" name="helpAndContactButtonHomePage" i18n>Terms & Conditions</a> |
+    </p>
+    <p class="display-style">
+      <a routerLink="/public/licencepolicy" name="termOfUseButtonHomePage" i18n>License Policy</a>
+    </p>
+  </div>
+  <div>
+    <p class="display-style">
+      <a routerLink="/public/content-policy-and-community-guidelines" name="helpAndContactButtonHomePage" i18n>Content
+        Policy & Community Guidelines
+    
+      </a> |
+    </p>
+    <p class="display-style">
+      <a routerLink="/public/assetguidelines" name="termOfUseButtonHomePage" i18n>Asset Guidelines</a> |
+    </p>
+    <p class="display-style">
+      <a routerLink="/public/contact" name="helpAndContactButtonHomePage" i18n>Contact Us</a>
+    </p>
+  </div> -->
+  <div class="col-3 footer-playstore-buttons">
+    <div class="rectangle" (click)="navigateToOuterSource('https://apps.apple.com/us/app/id1530333275')">
+      <a class="flex">
+        <div class="appleIcon">
+          <img src="/assets/instances/space/banners/appleIcon.png">
+        </div>
+        <div class="appStore-icon">
+          <p class="icon-text">Available on the</p>
+          <p class="appstore-text">App Store</p>
+        </div>
+      </a>
+    </div>
+    <div class="rectangle"
+      (click)="navigateToOuterSource('https://play.google.com/store/apps/details?id=ekstep.societal.space')">
+      <a class="flex">
+        <div class="playStore">
+          <img src="/assets/instances/space/banners/playStore.png">
+        </div>
+        <div class="appStore-icon">
+          <p class="icon-text">Get it on</p>
+          <p class="appstore-text">Google Play</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- *****************Previous file************************************* -->
+
+
+
+
 <!-- <div *ngIf="showFooter">
   <footer class="footer" #footerFix *ngIf="!layoutConfiguration"
     [ngClass]="{'player-fullscreen-footer': isFullScreenView}">
@@ -95,132 +227,3 @@
 </div>
 
 <extension-point *appDesktopOnly [name]="'content-manager'"></extension-point> -->
-
-
-
-
-
-<div id="display-item" class="mat-toolbar footer-container px-2 sm:px-10 py-1 sm:py-5"
-  [ngClass]="{ 'mat-primary': !isXSmall, 'mat-primarylight': isXSmall }">
-  <div class="mat-body flex" id="display">
-    <!-- <mat-grid-list cols="2" rowHeight="133px"> -->
-    <!-- <mat-grid-tile class="font-semibold text-xs md:text-sm xl:text-sm" i18n> -->
-    <div class="col-1">
-      <p class="text-style">
-        Ekstep Foundation</p>
-      <p class="text-style"> Quorum, No. 85, 7th Cross, 4th Block</p>
-      <p class="text-style"> Koramangala, Bangalore - 560034</p>
-      <p class="text-style"> Karnataka, INDIA</p>
-      <p class="text-style"><a class="mail-style body-font-size-secondary"
-          href="mailto:space@societalplatform.org">space@societalplatform.org</a><br>
-      </p>
-    </div>
-    <!-- </mat-grid-tile> -->
-    <!-- <mat-grid-tile> -->
-    <div class="col-2">
-      <p class="policy-text-style policy-footer"> <a routerLink="/public/dataprivacy"
-          class="text-style policy font-size-14px" name="helpAndContactButtonHomePage" i18n>Data
-          Privacy</a></p>
-      <p class="policy-text-style policy-footer"><a routerLink="public/termsofuse"
-          class="text-style policy font-size-14px" name="helpAndContactButtonHomePage" i18n>Terms &
-          Conditions</a></p>
-      <p class="policy-text-style policy-footer"><a routerLink="/public/content-policy-and-community-guidelines"
-          class="text-style policy font-size-14px" name="helpAndContactButtonHomePage" i18n>Content Policy and Community
-          Guidelines
-          <!-- Process -->
-        </a></p>
-      <!-- </div> -->
-      <!-- <div class="mat-body" id="display"> -->
-      <p class="policy-text-style policy-footer"><a routerLink="/public/licencepolicy"
-          class="text-style policy font-size-14px" name="termOfUseButtonHomePage" i18n>License Policy</a>
-      </p>
-      <p class="policy-text-style policy-footer"><a routerLink="/public/assetguidelines"
-          class="text-style policy font-size-14px" name="termOfUseButtonHomePage" i18n>Asset
-          Guidelines</a>
-      </p>
-      <!-- <a routerLink="/public/contact" name="helpAndContactButtonHomePage" i18n>Contact Us</a> -->
-      <!-- </div> -->
-    </div>
-    <!-- </mat-grid-tile> -->
-    <!-- </mat-grid-list> -->
-    <div class="col-3 footer-playstore-buttons">
-      <div class="rectangle" (click)="navigateToOuterSource('https://apps.apple.com/us/app/id1530333275')">
-        <a class="flex">
-          <div class="appleIcon">
-            <img src="assets/images/appleIcon.png">
-          </div>
-          <div class="appStore-icon">
-            <p class="icon-text">Available on the</p>
-            <p class="appstore-text">App Store</p>
-          </div>
-        </a>
-      </div>
-      <div class="rectangle"
-        (click)="navigateToOuterSource('https://play.google.com/store/apps/details?id=ekstep.societal.space')">
-        <a class="flex">
-          <div class="playStore">
-            <img src="assets/images/playStore.png">
-          </div>
-          <div class="appStore-icon">
-            <p class="icon-text">Get it on</p>
-            <p class="appstore-text">Google Play</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="display-responsive" class="mat-toolbar px-2 sm:px-10 py-1 sm:py-4"
-  [ngClass]="{ 'mat-primary': !isXSmall, 'mat-primarylight': isXSmall }">
-
-  <!-- <div>
-    <p class="display-style">
-      <a routerLink="/public/dataprivacy" name="helpAndContactButtonHomePage" i18n>Data Privacy</a> |
-    </p>
-    <p class="display-style">
-      <a routerLink="public/termsofuse" name="helpAndContactButtonHomePage" i18n>Terms & Conditions</a> |
-    </p>
-    <p class="display-style">
-      <a routerLink="/public/licencepolicy" name="termOfUseButtonHomePage" i18n>License Policy</a>
-    </p>
-  </div>
-  <div>
-    <p class="display-style">
-      <a routerLink="/public/content-policy-and-community-guidelines" name="helpAndContactButtonHomePage" i18n>Content
-        Policy & Community Guidelines
-    
-      </a> |
-    </p>
-    <p class="display-style">
-      <a routerLink="/public/assetguidelines" name="termOfUseButtonHomePage" i18n>Asset Guidelines</a> |
-    </p>
-    <p class="display-style">
-      <a routerLink="/public/contact" name="helpAndContactButtonHomePage" i18n>Contact Us</a>
-    </p>
-  </div> -->
-  <div class="col-3 footer-playstore-buttons">
-    <div class="rectangle" (click)="navigateToOuterSource('https://apps.apple.com/us/app/id1530333275')">
-      <a class="flex">
-        <div class="appleIcon">
-          <img src="/assets/instances/space/banners/appleIcon.png">
-        </div>
-        <div class="appStore-icon">
-          <p class="icon-text">Available on the</p>
-          <p class="appstore-text">App Store</p>
-        </div>
-      </a>
-    </div>
-    <div class="rectangle"
-      (click)="navigateToOuterSource('https://play.google.com/store/apps/details?id=ekstep.societal.space')">
-      <a class="flex">
-        <div class="playStore">
-          <img src="/assets/instances/space/banners/playStore.png">
-        </div>
-        <div class="appStore-icon">
-          <p class="icon-text">Get it on</p>
-          <p class="appstore-text">Google Play</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
