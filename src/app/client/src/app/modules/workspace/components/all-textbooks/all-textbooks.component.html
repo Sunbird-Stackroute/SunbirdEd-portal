@@ -92,11 +92,11 @@
         </div>
       </div>
       <!--/Content-->
-  
+
       <!--Actions-->
       <div class="sb-modal-actions flex-jc-space-between">
         <div>
-        <button 
+        <button
           class="sb-btn sb-btn-normal sb-btn-outline-error mr-10"
           [class.fadInButton]="showCollectionLoader"
           (click)="modal.deny('denied')"
@@ -104,7 +104,7 @@
         >
           {{resourceService?.frmelmnts?.btn?.no}}
         </button>
-        <button 
+        <button
               class="sb-btn sb-btn-normal sb-btn-error ui disabled"
               [class.fadInButton]="showCollectionLoader"
               (click)="checkLinkedCollections(modal)"
@@ -159,4 +159,3 @@ class="sb-modal custom-lg-modal" (dismissed)="this.collectionListModal = false" 
   </div>
 </sui-modal>
 <app-contentlock-info-popup [content]="lockPopupData" (closeEvent)="onCloseLockInfoPopup($event)" *ngIf="showLockedContentModal"></app-contentlock-info-popup>
-

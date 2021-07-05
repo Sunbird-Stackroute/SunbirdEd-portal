@@ -273,7 +273,6 @@ export class AllTextbooksComponent extends WorkSpace implements OnInit, AfterVie
         geo: bothParams.queryParams.geo,
         topic: bothParams.queryParams.topic,
         contentType: bothParams.queryParams.contentType
-
       },
       limit: limit,
       offset: (pageNumber - 1) * (limit),
@@ -489,4 +488,3 @@ export class AllTextbooksComponent extends WorkSpace implements OnInit, AfterVie
     });
   }
 }
-
