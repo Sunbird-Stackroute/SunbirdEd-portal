@@ -15,7 +15,7 @@ import * as TreeModel from 'tree-model';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { PopupControlService } from '../../../../service/popup-control.service';
 import { PublicPlayerService } from '@sunbird/public';
-import { TocCardType, PlatformType } from '@project-sunbird/common-consumption';
+import { TocCardType, PlatformType } from '@sunbird-stackroute/common-consumption';
 import { CsGroupAddableBloc } from '@project-sunbird/client-services/blocs';
 
 interface IRecursiveData {
@@ -709,4 +709,3 @@ export class CollectionPlayerComponent implements OnInit, OnDestroy, AfterViewIn
     this.sideNavClose = !this.sideNavClose
   }
 }
-

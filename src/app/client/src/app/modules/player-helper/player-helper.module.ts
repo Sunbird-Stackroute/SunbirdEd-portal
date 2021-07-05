@@ -13,7 +13,7 @@ import {
 import { SharedModule } from '@sunbird/shared';
 import { CoreModule } from '@sunbird/core';
 import { FormsModule } from '@angular/forms';
-import { CommonConsumptionModule } from '@project-sunbird/common-consumption';
+import { CommonConsumptionModule } from '@sunbird-stackroute/common-consumption';
 import { SunbirdPdfPlayerModule } from '@project-sunbird/sunbird-pdf-player';
 import { MatDividerModule, MatIconModule, MatCardModule, MatButtonModule } from '@angular/material';
 

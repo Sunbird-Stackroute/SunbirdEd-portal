@@ -5,7 +5,7 @@ import { FaqComponent } from './components';
 import { TelemetryModule } from '@sunbird/telemetry';
 import { CoreModule } from '@sunbird/core';
 import { SharedModule } from '@sunbird/shared';
-import { CommonConsumptionModule } from '@project-sunbird/common-consumption';
+import { CommonConsumptionModule } from '@sunbird-stackroute/common-consumption';
 
 @NgModule({
   imports: [

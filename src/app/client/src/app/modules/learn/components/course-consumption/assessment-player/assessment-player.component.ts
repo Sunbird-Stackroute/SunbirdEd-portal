@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { TelemetryService, IAuditEventInput, IImpressionEventInput } from '@sunbird/telemetry';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { TocCardType } from '@project-sunbird/common-consumption';
+import { TocCardType } from '@sunbird-stackroute/common-consumption';
 import { UserService, GeneraliseLabelService } from '@sunbird/core';
 import { AssessmentScoreService, CourseBatchService, CourseConsumptionService } from '@sunbird/learn';
 import { PublicPlayerService } from '@sunbird/public';
@@ -147,7 +147,7 @@ export class AssessmentPlayerComponent implements OnInit, OnDestroy {
       paramas['textbook'] = _.get(this.activatedRoute, 'snapshot.queryParams.textbook');
     }
     // this.router.navigate(['/learn/course', this.courseId, 'batch', this.batchId], {queryParams: paramas});
-    //update the url only if it has batch id, or use default url 
+    //update the url only if it has batch id, or use default url
     if(!this.courseId && !this.batchId){
     this.router.navigate(['/learn'], {queryParams: paramas});
   }
