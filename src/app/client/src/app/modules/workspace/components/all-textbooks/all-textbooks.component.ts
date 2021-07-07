@@ -258,10 +258,11 @@ export class AllTextbooksComponent extends WorkSpace implements OnInit, AfterVie
     }
 
     const preStatus = ['Draft', 'FlagDraft', 'Review', 'Processing', 'Live', 'Unlisted', 'FlagReview'];
+    const contenttype = ['TextBook'];
     const searchParams = {
       filters: {
         status: bothParams.queryParams.status ? bothParams.queryParams.status : preStatus,
-        contentType: this.config.appConfig.WORKSPACE.adminHandledContentType,
+        // contentType: this.config.appConfig.WORKSPACE.adminHandledContentType,
         objectType: this.config.appConfig.WORKSPACE.objectType,
         board: bothParams.queryParams.board,
         subject: bothParams.queryParams.subject,
@@ -272,7 +273,7 @@ export class AllTextbooksComponent extends WorkSpace implements OnInit, AfterVie
         department: bothParams.queryParams.department,
         geo: bothParams.queryParams.geo,
         topic: bothParams.queryParams.topic,
-        // contentType: bothParams.queryParams.contentType
+        contentType: bothParams.queryParams.contentType || contenttype
       },
       limit: limit,
       offset: (pageNumber - 1) * (limit),
