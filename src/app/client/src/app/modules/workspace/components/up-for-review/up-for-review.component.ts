@@ -195,9 +195,7 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
     const searchParams = {
       filters: {
         status: ['Review'],
-        createdFor: this.userService.RoleOrgMap && _.compact(_.union(rolesMap['CONTENT_REVIEWER'],
-          rolesMap['BOOK_REVIEWER'],
-          rolesMap['CONTENT_REVIEW'])),
+        createdFor: this.userService.RoleOrgMap && _.compact(_.union(rolesMap['CONTENT_REVIEWER'], rolesMap['BOOK_REVIEWER'], rolesMap['CONTENT_REVIEW'])),
         createdBy: { '!=': this.userService.userid },
         objectType: this.config.appConfig.WORKSPACE.objectType,
         board: bothParams.queryParams.board,
@@ -315,6 +313,7 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
       _.indexOf(this.userRoles, 'BOOK_REVIEWER') !== -1) {
       contentType = this.config.appConfig.WORKSPACE.contentType;
     }
+    contentType.push("TextBook");
     return contentType;
   }
 }
