@@ -71,6 +71,10 @@ export const currentFrameworkData = [
         "requiredFacets": ["geo", "department", "topic", "contentType", "medium"]
     },
     {
+        "rootOrgName": 'StackRoute',
+        "requiredFacets": ["geo", "department", "topic", "contentType", "medium"]
+    },
+    {
         "rootOrgName": '*',
         "requiredFacets": ["primaryCategory", "mission", "contributorOrg"]
     }

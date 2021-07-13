@@ -170,7 +170,8 @@ export namespace CollectionHierarchyAPI {
     status?: string;
     mission?:string;
     contributorOrg?:string;
+    department?: string;
+    geo?: string;
   }
 
 }
-
